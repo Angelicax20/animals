@@ -1,5 +1,7 @@
 import {FC, useState} from 'react';
 import { TextField, Button, Box, MenuItem, Typography } from '@mui/material';
+import {useMutation} from "@tanstack/react-query";
+import {createAnimals} from "../services/apiservice.ts";
 
 interface FormData {
   especie: string;
@@ -25,6 +27,12 @@ const RegisterAnimal: FC = () => {
     descripcion: ''
   });
 
+  const {mutate} = useMutation({
+    mutationKey: ['createAnimals'],
+    mutationFn: (data:FormData) => createAnimals(data)
+  })
+
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -35,16 +43,21 @@ const RegisterAnimal: FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Formulario enviado', formData);
-    setFormData({
+    mutate(formData,{
+      onSuccess: () =>{
+        setFormData({
+          especie: '',
+          edad: 0,
+          situacion: '',
+          ubicacion:'',
+          ayuda: '',
+          descripcion: ''
 
-      especie: '',
-      edad: 0,
-      situacion: '',
-      ubicacion:'',
-      ayuda: '',
-      descripcion: ''
-
+        })
+      }
     })
+
+
     // Aquí puedes agregar la lógica para enviar los datos a un servidor o procesarlos
   };
 

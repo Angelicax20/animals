@@ -16,9 +16,27 @@ class ApiFactory{
 
 const api = new ApiFactory();
 
-export async function getOrganization() {
+export async function getAnimals() {
     try {
         let response = await api.init().get('/api/animals')
+        if (response.status === 200) {
+            return response.data
+        } else {
+            return null
+        }
+    } catch (e) {
+        console.log('/api/animals')
+        console.log(e)
+        return null
+    }
+}
+
+export async function createAnimals(data: any) {
+    try {
+        let response = await api.init().post(
+            '/api/animals',
+            data
+        )
         if (response.status === 200) {
             return response.data
         } else {
