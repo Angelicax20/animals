@@ -1,6 +1,7 @@
 import {FC} from 'react';
 import {Button, Card, CardActions, CardContent, CardMedia, Stack, Typography} from "@mui/material";
 import { Link } from 'react-router-dom';
+import perritos from '../assets/perritos.png';
 
 const Home: FC = () => {
   return (
@@ -15,16 +16,16 @@ const Home: FC = () => {
             <CardMedia
                 component="img"
                 height="740"
-                image="https://content.nationalgeographic.com.es/medio/2022/12/12/perro-1_514aad3b_221212161023_1280x720.jpg" // Coloca aquí una URL válida de imagen
+            image= {`${perritos}`} // Coloca aquí una URL válida de imagen
                 alt="Imagen de un perro" // Texto alternativo descriptivo
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    Lizard
+                <Typography gutterBottom variant="h3" component="div" sx={{color:"#78BDC4"}}>
+                ¡Adopta un Amigo Fiel!
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
+                    Bienvenidos a nuestra página de adopción de perros.
+                    Aquí encontrarás a tu nuevo mejor amigo, listo para llenar tu vida de amor y alegría. Cada uno de nuestros perros ha sido rescatado y está esperando una segunda oportunidad en un hogar lleno de cariño
                 </Typography>
             </CardContent>
             <CardActions
@@ -32,7 +33,7 @@ const Home: FC = () => {
                     justifyContent: 'center'
                 }}
             >
-                <Button variant={"outlined"} size="large" component={Link} to="/register">Formulario</Button>
+                <Button variant={"contained"} size="large" component={Link} to="/register">Adoptame</Button>
             </CardActions>
         </Card>
     </Stack>
