@@ -1,7 +1,7 @@
 // src/pages/RegisterAnimal.tsx
-import React from 'react';
+import {FC} from 'react';
 
-const RegisterAnimal: React.FC = () => {
+const RegisterAnimal: FC = () => {
   return (
     <div>
       <h1>Registrar un Animal</h1>

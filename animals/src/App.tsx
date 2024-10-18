@@ -1,18 +1,23 @@
 import {FC} from 'react'
 import './App.css'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {Route, Routes, } from 'react-router-dom';
 import Home from './pages/Home';
 import RegisterAnimal from './pages/RegisterAnimal';
+import Navbar from "./routes/NavBar.tsx";
 
 const App: FC = () => {
-  return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/register" component={RegisterAnimal} />
-      </Switch>
-    </Router>
-  );
+    return (
+        <div>
+            {/* Aquí mostramos la barra de navegación en todas las páginas */}
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/register" element={<RegisterAnimal />} />
+                <Route path="/contact" element={<RegisterAnimal />} />
+            </Routes>
+        </div>
+
+    );
 }
 
 
